@@ -23,22 +23,6 @@ function App() {
     setTasks(newTasks);
   }
 
-  useEffect(() => {
-    const fetchTask = async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/todos?_limit=10",
-        {
-          method: "GET",
-        }
-      );
-      const data = await response.json()
-      
-      setTasks(data)
-    };
-
-    //fetchTask()
-  }, [])
-
   function onDeleteClick(taskId) {
     const deleteTask = tasks.filter((task) => task.id != taskId);
     setTasks(deleteTask);
