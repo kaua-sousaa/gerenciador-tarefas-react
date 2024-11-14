@@ -4,9 +4,10 @@ import Tasks from "./components/Tasks";
 import Title from "./components/Title";
 
 function App() {
-  const [tasks, setTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks") || [])
-  );
+  const [tasks, setTasks] = useState(() =>{
+    const storedTasks = localStorage.getItem("tasks")
+    return storedTasks ? JSON.parse(storedTasks) : [] 
+  });
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks))
